@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+<section class="softdev-sec1">
+    <div class="softdev-content">
+        <h2 class="softdev-heading" data-aos="fade-right" data-aos-duration="1500">{{ section_one.heading|heading_color|safe }}</h2>
+        <p class="softdev-desc" data-aos="fade-up" data-aos-duration="1500">{{ section_one.description }}</p>
+    </div>
+
+    <div class="softdev-image" data-aos="fade-left" data-aos-duration="1500">
+        <img src="{{ section_one.image.url }}" alt="Software Development">
+    </div>
+</section>
+
+<!-- SECTION TWO -->
+<section class="softdev-sec2">
+    <div class="softdev-box-grid">
+        {% for box in section_two %}
+        <div class="softdev-box">
+            <div class="softdev-icon-wrap" data-aos="fade-right" data-aos-duration="1500">
+                <i class="{{ box.icon_class }}"></i>
+            </div>
+            <h3 class="softdev-title" data-aos="fade-left" data-aos-duration="1500">{{ box.title }}</h3>
+            <p class="softdev-desc" data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- SECTION THREE -->
+<section class="softdev-sec3">
+    <div class="softdev-sec3-heading">
+        <h2 data-aos="fade-up" data-aos-duration="1500">{{ section_three.heading|colorize_25_50_25|safe }}</h2>
+        <p data-aos="fade-up" data-aos-duration="1500">{{ section_three.description }}</p>
+    </div>
+
+    <div class="softdev-sec3-box-grid">
+        {% for box in section_three_boxes %}
+        <div class="softdev-sec3-box">
+            <div class="softdev-icon-wrap" data-aos="fade-right" data-aos-duration="1500">
+                <i class="{{ box.icon_class }}"></i>
+            </div>
+
+            <div class="softdev-titles" data-aos="fade-left" data-aos-duration="1500">
+                <h3 class="title-one">{{ box.title_one|color_title_one|safe }}</h3>
+                <h3 class="title-two">{{ box.title_two|color_title_two|safe }}</h3>
+            </div>
+
+            <p class="softdev-box-desc" data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+
+            {% if box.image %}
+            <img src="{{ box.image.url }}" alt="{{ box.title_one }}" class="softdev-box-img" data-aos="zoom-in" data-aos-duration="1500">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+{% endblock %}

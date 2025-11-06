@@ -1,0 +1,264 @@
+.softdev-sec1 {
+    width: 100%;
+    padding: 80px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.softdev-content {
+    flex: 1;
+}
+
+.softdev-heading {
+    font-size: 42px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 18px;
+}
+
+.softdev-desc {
+    color: #444;
+    line-height: 1.6;
+    font-size: 28px;
+}
+
+.softdev-image {
+    flex: 1;
+    text-align: right;
+}
+
+.softdev-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+}
+
+/* Responsive */
+@media(max-width: 992px) {
+    .softdev-sec1 {
+        flex-wrap: wrap;
+        text-align: center;
+        flex-direction: column;
+    }
+    .softdev-image {
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+.softdev-sec2 {
+    width: 100%;
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.softdev-box-grid {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.softdev-box {
+    width: 280px;
+    background: #f5f7fa;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: rgb(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.softdev-box:hover {
+    transform: translateY(-8px);
+    border: 1px solid #0a933c;
+}
+
+.softdev-icon-wrap {
+    width: 80px;
+    height: 80px;
+    background: #0a933c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+.softdev-icon-wrap i {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.softdev-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 30px;
+    margin-top: -50px;
+}
+
+.softdev-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* 💻 RESPONSIVE DESIGN */
+@media(max-width: 1024px) {
+    .softdev-box {
+        width: 45%;
+    }
+}
+
+@media(max-width: 768px) {
+    .softdev-box {
+        width: 80%;
+    }
+}
+
+@media(max-width: 480px) {
+    .softdev-box {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+.softdev-sec3 {
+    width: 100%;
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f5f7fa;
+}
+
+.softdev-sec3-heading h2 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.softdev-sec3-heading p {
+    width: 70%;
+    margin: 0 auto 50px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.softdev-sec3-box-grid {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.softdev-sec3-box {
+    width: 500px;
+    background: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 25px 20px;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.softdev-sec3-box:hover {
+    transform: translateY(-6px);
+    border: 1px solid #0a933c;
+}
+
+/* ICON */
+.softdev-icon-wrap {
+    width: 55px;
+    height: 55px;
+    background: #0a933c;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    margin-left: -5px;
+}
+
+.softdev-icon-wrap i {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+/* TITLES INLINE */
+.softdev-titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: -55px;
+    margin-left: 50px;
+}
+
+.title-one {
+    color: #0a933c;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title-two {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.softdev-box-desc {
+    margin: 10px 0 15px;
+    margin-top: 55px;
+    text-align: left;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* IMAGE */
+.softdev-box-img {
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 250px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1024px) {
+    .softdev-sec3-box {
+        width: 45%;
+    }
+}
+
+@media(max-width: 768px) {
+    .softdev-sec3-box {
+        width: 80%;
+    }
+}
+
+@media(max-width: 480px) {
+    .softdev-sec3-box {
+        width: 100%;
+    }
+
+    .softdev-sec3-heading p {
+        width: 90%;
+    }
+}

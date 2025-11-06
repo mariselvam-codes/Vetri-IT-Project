@@ -1,0 +1,241 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+
+<section class="home-sec1">
+    <div class="home-sec1-content">
+        <h2 data-aos="fade-right" data-aos-duration="1500">{{ section_one.heading }}</h2>
+
+        <div class="desc-inline" data-aos="fade-up" data-aos-duration="1500">
+            {% if section_one.desc1 %}<p>{{ section_one.desc1 }}</p>{% endif %}
+            {% if section_one.desc2 %}<p>{{ section_one.desc2|colorize_green|safe }}</p>{% endif %}
+            {% if section_one.desc3 %}<p>{{ section_one.desc3 }}</p>{% endif %}
+        </div>
+
+        <a href="#" class="home-sec1-btn" onclick="openEnquiry()" data-aos="fade-up" data-aos-duration="1500">{{section_one.button_text }}</a>
+    </div>
+
+    <div class="home-sec1-img" data-aos="fade-left" data-aos-duration="1500">
+        {% if section_one.image %}
+        <img src="{{ section_one.image.url }}" alt="{{ section_one.heading }}">
+        {% endif %}
+    </div>
+</section>
+
+
+<section class="homesectiontwo">
+    {% if section_two %}
+    <h2 class="section-title">
+        <b>{{ section_two.title_one }}</b>
+        {{ section_two.title_two|colorize_green|safe }}
+    </h2>
+    {% endif %}
+
+    <div class="homesectiontwo-container">
+        <button class="scroll-btn left-btn" onclick="scrollContent('left')">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="homesectiontwoclietbox" id="client-scroll-container">
+            {% for box in section_two_client_boxes %}
+            <div class="client-box">
+                {% if box.image %}
+                <img src="{{ box.image.url }}" alt="{{ box.client_name }} Logo">
+                {% endif %}
+                <p>{{ box.client_name }}</p>
+            </div>
+            {% empty %}
+            <p>No clients added yet.</p>
+            {% endfor %}
+        </div>
+
+        <button class="scroll-btn right-btn" onclick="scrollContent('right')">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<script src="{% static 'core/js/script.js' %}"></script>
+
+
+
+
+
+
+<!-- HOME SECTION THREE -->
+<section class="home-sec3">
+    <div class="home-sec3-heading">
+        <h2 data-aos="fade-up" data-aos-duration="1500">
+            {{ section_three.black_title|color_black|safe }}
+            {{ section_three.green_title|color_green|safe }}
+        </h2>
+        <p data-aos="fade-up" data-aos-duration="1500">{{ section_three.description }}</p>
+    </div>
+
+    <div class="home-sec3-box-grid">
+        {% for box in section_three_boxes %}
+        <div class="home-sec3-box">
+            <div class="home-sec3-icon" data-aos="fade-up" data-aos-duration="1500">
+                <i class="{{ box.icon_class }}"></i>
+            </div>
+            <h3 data-aos="fade-up" data-aos-duration="1500">{{ box.title }}</h3>
+            <p data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- HOME SECTION FOUR -->
+<section class="home-sec4">
+    <div class="home-sec4-heading">
+        <h2 data-aos="fade-up" data-aos-duration="1500">
+            {{ section_four.black_title|color_black|safe }}
+            {{ section_four.green_title|color_green|safe }}
+        </h2>
+        <p data-aos="fade-up" data-aos-duration="1500">{{ section_four.description }}</p>
+    </div>
+
+    <div class="home-sec4-box-grid">
+        {% for box in section_four_boxes %}
+        <div class="home-sec4-box">
+            <div class="home-sec4-img" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ box.image.url }}" alt="{{ box.heading }}">
+            </div>
+            <div class="home-sec4-content">
+                <h3 data-aos="fade-up" data-aos-duration="1500">{{ box.heading }}</h3>
+                <p data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+                <ul>
+                    {% for point in box.point_list %}
+                    <li data-aos="fade-right" data-aos-duration="1500"><i class="fa-solid fa-check"></i> {{ point }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<!-- section 5 -->
+<div class="home-sec5-heading" style="justify-content: center;margin-top: 50px;text-align: center;">
+    <h2 data-aos="fade-up" data-aos-duration="1500" style="font-size: 32px;">
+        {{ section_five.heading|alternate_color|safe }}
+    </h2>
+    <p data-aos="fade-up" data-aos-duration="1500">{{ section_five.description }}</p>
+</div>
+
+<section class="review-section">
+    <div class="review-wrapper">
+        <button class="scroll-btn left-btn" onclick="scrollReviews('left')">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="review-scroll-container" id="review-scroll-container">
+            <div class="review-cards-container">
+                {% for box in section_five_reviews %}
+                <div class="review-card">
+
+                    <div class="review-card-top">
+                        <div class="reviewer-icon">
+                            {% if box.icon %}
+                            <img src="{{ box.icon.url }}" alt="{{ box.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="reviewer-info">
+                            <h3>{{ box.name }}</h3>
+                            <span>{{ box.company_name }}</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card-desc">
+                        <p>{{ box.description }}</p>
+                    </div>
+
+                    <div class="review-card-rating">
+                        {% for i in "12345"|slice:":box.rating" %}
+                        <i class="fa-solid fa-star"></i>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% empty %}
+                <p>No reviews available.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button class="scroll-btn right-btn" onclick="scrollReviews('right')">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<section class="home-sec6">
+    <h2 class="sec6-heading">{{ section_six.heading|split_alternate|safe }}</h2>
+
+    <!-- TAB BUTTONS -->
+    <div class="sec6-tabs-scroll">
+        <div class="sec6-tabs">
+            {% for tab in section_six_tabs %}
+            <button class="sec6-tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ tab.id }}">
+                {{ tab.title }}
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- IMAGE GALLERY -->
+    <div class="sec6-gallery-container">
+        <button class="sec-6-scroll-btn left-btn" onclick="scrollGallery('left')">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        {% for tab in section_six_tabs %}
+        <div class="sec6-gallery-scroll {% if forloop.first %}active{% endif %}" id="tab-{{ tab.id }}">
+            <div class="sec6-gallery-inner">
+                {% for image in tab.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ tab.title }}">
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <button class="sec-6-scroll-btn right-btn" onclick="scrollGallery('right')">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- HOME SECTION SEVEN -->
+<section class="home-sec7">
+    <div class="sec7-heading-wrap">
+        <h2 data-aos="fade-up" data-aos-duration="1500">{{ section_seven.heading|alternate_color|safe }}</h2>
+        <p data-aos="fade-up" data-aos-duration="1500">{{ section_seven.description }}</p>
+    </div>
+
+    <div class="faq-container">
+        {% for box in section_seven_boxes %}
+        <div class="faq-box">
+            <div class="faq-question" data-aos="fade-up" data-aos-duration="1500">
+                <span class="faq-q-text">{{ box.question }}</span>
+                <div class="faq-icon" data-index="{{ forloop.counter0 }}" data-open="{{ box.icon_open_class }}"
+                    data-close="{{ box.icon_close_class }}">
+                    <i class="{{ box.icon_open_class }}"></i>
+                </div>
+            </div>
+            <div class="faq-answer" data-aos="fade-up" data-aos-duration="1500">
+                <p>{{ box.answer }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

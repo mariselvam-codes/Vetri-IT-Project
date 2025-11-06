@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Thank you for your enquiry</title>
+</head>
+
+<body>
+  <h2>Hi {{ enquiry.name }},</h2>
+  <p>Thank you for contacting us regarding <strong>{{ enquiry.service }}</strong>.</p>
+  <p>We have received your message and we will get back to you shortly.</p>
+  <p>Here are the details we received:</p>
+  <ul>
+    <li>Name: {{ enquiry.name }}</li>
+    <li>Email: {{ enquiry.email }}</li>
+    <li>Phone: {{ enquiry.phone }}</li>
+    <li>Message: {{ enquiry.message }}</li>
+  </ul>
+  <p>Best regards,<br>Vetri IT Systems Team</p>
+</body>
+
+</html>

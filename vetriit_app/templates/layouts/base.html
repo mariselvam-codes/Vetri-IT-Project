@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_settings.site_title }}</title>
+    {% if site_settings.favicon %}
+    <link rel="icon" type="image/png" href="{{ site_settings.favicon.url }}">
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+    <link rel="stylesheet" href="{% static 'css/design_services.css' %}">
+    <link rel="stylesheet" href="{% static 'css/website_development.css' %}">
+    <link rel="stylesheet" href="{% static 'css/software_development.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-yH6JiU4fZfVnV6Nv4BLw6NIpT0QY+7ZPru6gKbv47SyaeNfE5iGUv8zHgp2cXL7Ae3pnVZHj5VsfX3neX+40Jw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+</head>
+
+<body>
+    {% include 'include/navbar.html'%}
+    {% block content %}{% endblock %}
+    {% include 'include/footer.html'%}
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Enquiry Form Modal -->
+    <div id="enquiryModal" class="enquiry-modal">
+        <div class="enquiry-content">
+            <div class="enquiry-header">
+                <div></div>
+                <h2 data-aos="fade-right" data-aos-duration="1500">Quick <span style="color: #0a933c;">Enquiry</span></h2>
+                <span class="close-btn" onclick="closeEnquiry()">&times;</span>
+            </div>
+
+            <form class="enquiry-form" method="post" action="{% url 'submit_enquiry' %}" data-aos="fade-up" data-aos-duration="1500">
+                {% csrf_token %}
+                <div class="input-group" data-aos="fade-up" data-aos-duration="1500">
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="name" placeholder="Enter Name" required style="border: 1px solid #0a933c;">
+                </div>
+
+                <div class="input-group" data-aos="fade-up" data-aos-duration="1500">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Enter Email Address" required
+                        style="border: 1px solid #0a933c;">
+                </div>
+
+                <div class="input-group" data-aos="fade-up" data-aos-duration="1500">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" name="phone" placeholder="Enter Mobile Number" required
+                        style="border: 1px solid #0a933c;">
+                </div>
+
+                <div class="input-group" data-aos="fade-up" data-aos-duration="1500">
+                    <i class="fa fa-comment"></i>
+                    <textarea name="message" placeholder="Enter the Message" required
+                        style="border: 1px solid #0a933c;"></textarea>
+                </div>
+
+                <div class="input-group" data-aos="fade-up" data-aos-duration="1500">
+                    <i class="fa fa-briefcase"></i>
+                    <select name="service" required style="border: 1px solid #0a933c;">
+                        <option value="" disabled selected>Select a Service</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Software Development">Software Development</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Static Websites">Static Websites</option>
+                        <option value="Dynamic Websites">Dynamic Websites</option>
+                        <option value="E-Commerce Websites">E-Commerce Websites</option>
+                    </select>
+                </div>
+
+                <div class="submit-btn" data-aos="fade-up" data-aos-duration="1500">
+                    <button type="submit">Get a Quote</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        const enquiryModal = document.getElementById("enquiryModal");
+
+        // Open modal when navbar enquiry button clicked
+        function openEnquiry() {
+            enquiryModal.style.display = "flex";
+        }
+
+        // Close modal
+        function closeEnquiry() {
+            enquiryModal.style.display = "none";
+        }
+
+        // Close when clicking outside
+        window.onclick = function (event) {
+            if (event.target == enquiryModal) {
+                closeEnquiry();
+            }
+        }
+    </script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

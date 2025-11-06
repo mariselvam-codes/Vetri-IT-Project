@@ -1,0 +1,111 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Z6eOm94I/3XJq2YanFkVlI35i7P9kF9hzBlUY4LgV+HGOH9G1rkRmzv/ydMuNoMNFc13JUO2c+hJmpsz8Bt7H2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<section class="webdev-sec1">
+    <div class="webdev-container">
+
+        <div class="webdev-text">
+            <h2 class="webdev-title" data-aos="fade-right" data-aos-duration="1500">{{ section_one.heading|alternate_color|safe }}</h2>
+            <p class="webdev-desc" data-aos="fade-up" data-aos-duration="1500">{{ section_one.description }}</p>
+        </div>
+
+        <div class="webdev-img-wrapper">
+            {% if section_one.image %}
+            <img src="{{ section_one.image.url }}" alt="Web Development" class="webdev-img" data-aos="fade-left" data-aos-duration="1500">
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+<section class="webdev-sec2">
+
+    <div class="webdev-box-grid">
+        {% for item in section_two %}
+        <div class="webdev-box">
+
+            {% if item.icon_class %}
+            <div class="webdev-icon-wrap" data-aos="fade-up" data-aos-duration="1500">
+                <i class="{{ item.icon_class }} feature-icon"></i>
+            </div>
+            {% endif %}
+
+            <h3 class="webdev-box-title" data-aos="fade-up" data-aos-duration="1500">{{ item.title }}</h3>
+            <p class="webdev-box-desc" data-aos="fade-up" data-aos-duration="1500">{{ item.description }}</p>
+
+        </div>
+        {% empty %}
+        <p style="text-align:center;">No features added yet</p>
+        {% endfor %}
+    </div>
+
+</section>
+
+<section class="webdev-sec3">
+
+    <div class="sec3-heading-wrap">
+        <h2 class="sec3-title" data-aos="fade-up" data-aos-duration="1500">{{ section_three.heading|color_words|safe }}</h2>
+        <p class="sec3-desc" data-aos="fade-up" data-aos-duration="1500">{{ section_three.description }}</p>
+    </div>
+
+    <div class="sec3-box-grid">
+        {% for box in section_three_boxes %}
+        <div class="sec3-box">
+            
+            {% if box.video %}
+            <video autoplay muted loop playsinline class="sec3-video" data-aos="fade-up" data-aos-duration="1500">
+                <source src="{{ box.video.url }}" type="video/mp4">
+            </video>
+            {% endif %}
+
+            <h3 class="sec3-box-title" data-aos="fade-up" data-aos-duration="1500">{{ box.title|color_words|safe }}</h3>
+            <p class="sec3-box-description" data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+
+            <ul class="sec3-points">
+                {% for point in box.get_points_list %}
+                <li data-aos="fade-right" data-aos-duration="1500"><i class="fa-solid fa-check tick-icon"></i>{{ point }}</li>
+                {% endfor %}
+            </ul>
+
+            <button class="sec3-btn" data-aos="fade-up" data-aos-duration="1500" onclick="openEnquiry()">Book Now</button>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<section class="webdev-sec4">
+    <div class="sec4-heading-wrap">
+        <h2 data-aos="fade-up" data-aos-duration="1500">{{ section_four.heading|half_color|safe }}</h2>
+        <p data-aos="fade-up" data-aos-duration="1500">{{ section_four.description }}</p>
+    </div>
+
+    <div class="sec4-box-grid">
+        {% for box in section_four_boxes %}
+        <div class="sec4-box">
+
+            <div class="sec4-top"style="background: linear-gradient(to bottom, {{ box.gradient_start }}, {{ box.gradient_end }});">
+                <h3 data-aos="fade-up" data-aos-duration="1500">{{ box.title }}</h3>
+                <h2 data-aos="fade-up" data-aos-duration="1500">{{ box.price }}</h2>
+            </div>
+
+            <ul class="sec4-features">
+                {% for feature in box.features_list %}
+                <li data-aos="fade-right" data-aos-duration="1500"><i class="fa-solid fa-check"></i> {{ feature }}</li>
+                {% endfor %}
+            </ul>
+
+            <a href="#" class="btn-sec4"style="background: linear-gradient(to bottom, {{ box.gradient_start }}, {{ box.gradient_end }});" data-aos="fade-up" data-aos-duration="1500"onclick="openEnquiry()">Book Now</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+{% endblock %}

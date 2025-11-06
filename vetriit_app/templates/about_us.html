@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+<section class="about-main">
+  <div class="about-container">
+    {% if about %}
+      <div class="about-text">
+        <h2 class="about-heading" data-aos="fade-right" data-aos-duration="1500">{{ about.heading|heading_color|safe }}</h2>
+        <p class="about-desc" data-aos="fade-up" data-aos-duration="1500">{{ about.description }}</p>
+      </div>
+
+      {% if about.image %}
+      <div class="about-image" data-aos="fade-left" data-aos-duration="1500">
+        <img src="{{ about.image.url }}" alt="{{ about.heading }}">
+      </div>
+      {% endif %}
+    {% else %}
+      <!-- fallback / placeholder -->
+      <div class="about-text">
+        <h2 class="about-heading">About Us</h2>
+        <p class="about-desc">Content is not added yet. Add About content from Django admin.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+
+<section class="about-features">
+  <div class="features-wrap">
+
+    <div class="feature-grid" data-aos="fade-up" data-aos-duration="1500">
+      {% for item in features %}
+      <div class="feature-card">
+        {% if item.icon %}
+          <div class="feature-icon-wrap">
+            <img src="{{ item.icon.url }}" alt="{{ item.heading }}" class="feature-icon">
+          </div>
+        {% endif %}
+        <h3 class="feature-card-title">{{ item.heading|heading_color|safe }}</h3>
+        <p class="feature-card-desc">{{ item.description }}</p>
+      </div>
+      {% empty %}
+      <p class="no-features">No features added yet. Add them from admin.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

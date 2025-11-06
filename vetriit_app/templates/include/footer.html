@@ -1,0 +1,64 @@
+{% load static %}
+{% load custom_filters %}
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Section 1 -->
+        <div class="footer-section" data-aos="fade-right" data-aos-duration="1500">
+            {% if footer.logo %}
+            <img src="{{ footer.logo.url }}" alt="Footer Logo" class="footer-logo">
+            {% endif %}
+            <h2 style="color: white;">{{ footer.title }}</h2>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="footer-section" data-aos="fade-up" data-aos-duration="1500">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'about_us' %}" class="nav-item active">About Us</a></li>
+                <li><a href="{% url 'design_services' %}" class="nav-item active">Design Services</a></li>
+                <li><a href="{% url 'website_development' %}" class="nav-item active">Website Development</a></li>
+                <li><a href="{% url 'software_development' %}" class="nav-item active">Software Development</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="footer-section" id="footer-contact" data-aos="fade-left" data-aos-duration="1500">
+            <h3>Contact Details</h3>
+            <p><i class="fa fa-phone"></i> {{ footer.phone }}</p>
+            <p><i class="fa fa-envelope"></i> {{ footer.email }}</p>
+            <p><i class="fa fa-map-marker"></i> {{ footer.address }}</p>
+        </div>
+
+        <!-- Section 4: Social Icons -->
+        {% if footer.icons.all %}
+        <div class="footer-section" data-aos="fade-up" data-aos-duration="1500">
+            <h3>{{ footer.section_four_heading }}</h3>
+            <div class="footer-icons">
+                {% for icon in footer.icons.all %}
+                    {% if 'whatsapp' in icon.icon_class %}
+                        {# format WhatsApp number properly #}
+                        <a href="https://wa.me/{{ icon.link|digits_only }}" target="_blank">
+                            <i class="{{ icon.icon_class }}"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{ icon.resolved_link }}" target="_blank">
+                            <i class="{{ icon.icon_class }}"></i>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if footer.video %}
+        <video class="footer-video" autoplay muted loop playsinline>
+            <source src="{{ footer.video.url }}" type="video/mp4">
+        </video>
+        <div class="footer-overlay"></div>
+        {% endif %}
+
+
+    </div>
+</footer>

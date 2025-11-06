@@ -1,0 +1,72 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block content %}
+
+<section class="design-services">
+    <div class="design-container">
+        <div class="design-text">
+            <h2 data-aos="fade-right" data-aos-duration="1500">
+                {% with section_one.heading|split_first as parts %}
+                <span class="green">{{ parts.0 }}</span>
+                <span class="black">{{ parts.1 }}</span>
+                {% endwith %}
+            </h2>
+            <p data-aos="fade-up" data-aos-duration="1500">{{ section_one.description }}</p>
+        </div>
+
+        <div class="design-image" data-aos="fade-left" data-aos-duration="1500">
+            <img src="{{ section_one.image.url }}" alt="Design Services Image">
+        </div>
+    </div>
+</section>
+
+<section class="design-sec2">
+    <div class="design-sec2-container">
+        {% for item in section_two %}
+        <div class="design-sec2-box">
+            <div class="design-sec2-icon" data-aos="fade-up" data-aos-duration="1500">
+                <i class="{{ item.icon_class }}"></i>
+            </div>
+            <h3 class="design-sec2-title" data-aos="fade-up" data-aos-duration="1500">{{ item.heading }}</h3>
+            <p class="design-sec2-desc" data-aos="fade-up" data-aos-duration="1500">{{ item.description }}</p>
+        </div>
+        {% empty %}
+        <p style="text-align:center;">Add design features from admin</p>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="design-sec3">
+    <div class="sec3-heading-wrap" style="text-align:center;">
+        <h2 class="sec3-title" data-aos="fade-up" data-aos-duration="1500">{{ section_three.heading|split_alternate|safe }}</h2>
+        <p class="sec3-desc" data-aos="fade-up" data-aos-duration="1500">{{ section_three.description }}</p>
+    </div>
+
+    <div class="sec3-box-grid">
+        {% for box in section_three_boxes %}
+        <div class="sec3-box">
+
+            <div class="sec3-img-wrap" data-aos="zoom-in" data-aos-duration="1500">
+                <img src="{{ box.image.url }}" alt="{{ box.heading }}" class="sec3-main-img">
+            </div>
+
+            <div class="sec3-inline">
+                {% if box.icon_class %}
+                <div class="sec3-icon" data-aos="fade-right" data-aos="fade-right" data-aos-duration="1500">
+                    <i class="{{ box.icon_class }}"></i>
+                </div>
+                {% endif %}
+                <h3 class="sec3-box-title" data-aos="fade-left" data-aos-duration="1500">{{ box.heading }}</h3>
+            </div>
+
+            <p class="sec3-box-desc" data-aos="fade-up" data-aos-duration="1500">{{ box.description }}</p>
+        </div>
+        {% empty %}
+        <p style="text-align:center;">No content added yet</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

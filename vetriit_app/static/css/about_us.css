@@ -1,0 +1,151 @@
+/* ABOUT - main block */
+.about-main {
+    background: #F5F7FA;
+    padding: 60px 5%;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Text */
+.about-text {
+    flex: 1 1 55%;
+}
+
+.about-heading {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.about-desc {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Image */
+.about-image {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    object-fit: cover;
+    /* box-shadow: 0 8px 30px rgba(10, 147, 60, 0.06); */
+}
+
+/* FEATURES block */
+.about-features {
+    background: #F5F7FA;
+    padding: 60px 5%;
+}
+
+.features-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #F5F7FA;
+}
+
+.feature-title {
+    color: #0A933C;
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+/* Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+/* Card */
+.feature-card {
+    background: #F5F7FA;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #0A933C;
+    text-align: justify;
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(10, 147, 60, 0.08);
+}
+
+.feature-icon-wrap {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* background: rgba(10, 147, 60, 0.06); */
+}
+
+.feature-icon {
+    max-width: 48px;
+    max-height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.feature-card-title {
+    margin: 8px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.feature-card-desc {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        order: -1;
+        margin-bottom: 18px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 1.4rem;
+    }
+
+    .feature-card {
+        padding: 16px;
+    }
+
+    .feature-grid {
+        gap: 14px;
+    }
+}

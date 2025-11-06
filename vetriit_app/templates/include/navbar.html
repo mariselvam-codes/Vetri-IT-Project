@@ -1,0 +1,33 @@
+{% load static %}
+<!-- ======= Header ======= -->
+<header class="header" data-aos="zoom-out-down" data-aos-duration="1500">
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo" data-aos="zoom-out-down" data-aos-duration="1500">
+            <a href="{% url 'home' %}">
+                {% if logo %}
+                <img src="{{ logo.image.url }}" alt="{{ logo.alt_text }}" style="width: 48px;height: 48px;">
+                {% else %}
+                <img src="{% static 'vetriit_app/images/default_logo.png' %}" alt="Default Logo">
+                {% endif %}
+            </a>
+        </div>
+
+        <!-- Nav Menu -->
+        <nav class="navbar">
+            <ul id="menuList">
+                <li data-aos="zoom-out" data-aos-duration="1500"><a href="{% url 'about_us' %}" class="nav-item active">About Us</a></li>
+                <li data-aos="zoom-out" data-aos-duration="1500"><a href="{% url 'design_services' %}">Design Services</a></li>
+                <li data-aos="zoom-out" data-aos-duration="1500"><a href="{% url 'website_development' %}">Website Development</a></li>
+                <li data-aos="zoom-out" data-aos-duration="1500"><a href="{% url 'software_development' %}">Software Development</a></li>
+                <li data-aos="zoom-out-down" data-aos-duration="1500" class="enquiryli"><a href="#" class="enquiry-btn" style="color: #fff;"
+                        onclick="openEnquiry()">Enquiry</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Icon -->
+        <div class="menu-icon" id="mobile-menu">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </div>
+</header>
