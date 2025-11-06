@@ -86,16 +86,30 @@ WSGI_APPLICATION = 'vetriit_project.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'vetriit_db',
+#         'USER': 'root',
+#         'PASSWORD': 'Mari@123000',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vetriit_db',
-        'USER': 'root',
-        'PASSWORD': 'Mari@123000',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
+
+
 
 
 # Password validation
