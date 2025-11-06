@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-r+18dzat3$&oqr-x&02l9fuo9zvr(6xy@k59+@&a4iv4u!i+pw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vetri-it-project-3.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
